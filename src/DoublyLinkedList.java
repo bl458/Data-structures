@@ -30,6 +30,8 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         size = 0;
     }
 
+    public int size() {return size;}
+
     public boolean isEmpty() {return size == 0;}
 
     public void add(T elem) {addLast(elem);}
@@ -93,8 +95,8 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     }
 
     private T remove(Node<T> node) {
-        if (node.prev == null) removeFirst();
-        if (node.next == null) removeLast();
+        if (node.prev == null) return removeFirst();
+        if (node.next == null) return removeLast();
 
         T data = node.data;
         node.prev.next = null;
@@ -172,7 +174,8 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         Node<T> trav = head;
         for (int i=0; i<size; i++) {
             sb.append(trav.data);
-            if (i != size) sb.append(", ");
+            if (i != size-1) sb.append(", ");
+            trav = trav.next;
         }
 
         return sb.append(']').toString();
