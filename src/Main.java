@@ -9,17 +9,24 @@ public class Main {
         // intArr.remove(1);
         // System.out.println(intArr + " " + intArr.size());
 
-        DoublyLinkedList<String> strDLList = new DoublyLinkedList<String>();
-        strDLList.add("b");
-        strDLList.add("d");
-        strDLList.add("c");
-        System.out.println(strDLList + " " + strDLList.indexOf("b") + strDLList.indexOf("d") + strDLList.indexOf("c"));
-        System.out.println(strDLList + " " + strDLList.size());
-        strDLList.remove("d");
-        System.out.println(strDLList + " " + strDLList.size());
-        strDLList.remove("b");
-        System.out.println(strDLList + " " + strDLList.size());
-        strDLList.remove("c");
-        System.out.println(strDLList + " " + strDLList.size());
-    }
+        // DoublyLinkedList<String> strDLList = new DoublyLinkedList<String>();
+        // strDLList.add("b");
+        // strDLList.add("d");
+        // strDLList.add("c");
+        // System.out.println(strDLList + " " + strDLList.indexOf("b") + strDLList.indexOf("d") + strDLList.indexOf("c"));
+        // System.out.println(strDLList + " " + strDLList.size());
+        // strDLList.remove("d");
+        // System.out.println(strDLList + " " + strDLList.size());
+        // strDLList.remove("b");
+        // System.out.println(strDLList + " " + strDLList.size());
+        // strDLList.remove("c");
+        // System.out.println(strDLList + " " + strDLList.size());
+
+        Stack<Integer> intStack = new Stack<Integer>();
+        intStack.push(1);
+        intStack.push(2);
+        System.out.println(intStack);
+        intStack.pop();
+        System.out.println(intStack);
+    }   
 }

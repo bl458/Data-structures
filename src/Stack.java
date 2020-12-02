@@ -5,7 +5,7 @@ public class Stack<T> implements Iterable<T> {
 
     public Stack() {}
 
-    public Stack(T firstElem) {}
+    public Stack(T firstElem) {push(firstElem);}
 
     public int size() {return list.size();}
 
@@ -22,4 +22,7 @@ public class Stack<T> implements Iterable<T> {
 
     @Override
     public java.util.Iterator<T> iterator() {return list.iterator();}
+
+    @Override
+    public String toString() {return list.toString();}
 }
