@@ -22,7 +22,7 @@ public class Array<T> implements Iterable<T> {
             else capacity *= 2;
 
             T[] new_arr = (T[]) new Object[capacity];
-            for (int i=0; i<arr.length; i++) 
+            for (int i=0; i<len; i++) 
                 new_arr[i] = arr[i];
             this.arr = new_arr;
         }
@@ -34,7 +34,7 @@ public class Array<T> implements Iterable<T> {
         
         T data = arr[idx];
         T[] new_arr = (T[]) new Object[len-1];
-        for (int i=0; i<arr.length; i++) 
+        for (int i=0; i<len; i++) 
             if (i != idx) new_arr[i] = arr[i];
         
         arr = new_arr;
@@ -43,7 +43,7 @@ public class Array<T> implements Iterable<T> {
     }
 
     public boolean remove(Object obj) {
-        for (int i=0; i<arr.length; i++) {
+        for (int i=0; i<len; i++) {
             if (obj.equals(arr[i])) {
                 removeAt(i);
                 return true;
@@ -53,7 +53,7 @@ public class Array<T> implements Iterable<T> {
     }
 
     public int indexOf(Object obj) {
-        for (int i=0; i<arr.length; i++) {
+        for (int i=0; i<len; i++) {
             if (obj.equals(arr[i])) return i;
         }
         return -1;
