@@ -80,9 +80,9 @@ public class Array<T> implements Iterable<T> {
         if (len == 1) return '[' + arr[0].toString() + ']';
         
         StringBuilder sb = new StringBuilder(len).append('[');
-        for (T elem : arr) {
-            sb.append(elem);
-            sb.append(", ");
+        for (int i=0; i<len; i++) {
+            sb.append(arr[i]);
+            if (i != len-1) sb.append(", ");
         }
 
         return sb.append(']').toString();
