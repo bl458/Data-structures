@@ -99,8 +99,6 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         if (node.next == null) return removeLast();
 
         T data = node.data;
-        node.prev.next = null;
-        node.next.prev = null; 
         node.prev.next = node.next;
         node.next.prev = node.prev;
         
