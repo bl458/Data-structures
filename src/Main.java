@@ -25,7 +25,7 @@ public class Main {
         Stack<Integer> intStack = new Stack<Integer>();
         intStack.push(1);
         intStack.push(2);
-        System.out.println(intStack);
+        System.out.println(intStack.toString() + ' ' + intStack.peek());
         intStack.pop();
         System.out.println(intStack);
     }   
