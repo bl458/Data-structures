@@ -34,8 +34,10 @@ public class Array<T> implements Iterable<T> {
         
         T data = arr[idx];
         T[] new_arr = (T[]) new Object[len-1];
-        for (int i=0; i<len; i++) 
-            if (i != idx) new_arr[i] = arr[i];
+        for (int i=0, j=0; i<len; i++, j++) { 
+            if (i == idx) j--;
+            else new_arr[j] = arr[i];
+        }
         
         arr = new_arr;
         capacity = --len;
@@ -75,6 +77,7 @@ public class Array<T> implements Iterable<T> {
     @Override
     public String toString() {
         if (len == 0) return "[]";
+        if (len == 1) return '[' + arr[0].toString() + ']';
         
         StringBuilder sb = new StringBuilder(len).append('[');
         for (T elem : arr) {
