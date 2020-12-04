@@ -1,55 +1,142 @@
 import java.util.*;
 
+//Implementing a min heap
 public class PQueue<T extends Comparable<T>> {
-    private int heapSize = 0;
-    private int heapCapacity = 0;
     private List<T> heap = null; 
-    private Map<T, TreeSet<Integer>> map = new HashMap<>();
 
-    public PQueue() {}
+    public PQueue() {this(1);}
 
-    public PQueue(int sz) {}
+    public PQueue(int sz) {heap = new ArrayList<>(sz);}
     
-    public PQueue(T[] elems) {}
+    //Create PQueue from array: O(n)
+    public PQueue(T[] elems) {
+        heap = new ArrayList<>(elems.length);
+        for (T elem : elems) heap.add(elem);
 
-    public PQueue(Collection<T> elems) {}
+        //Heapify O(n)
+        //Start from idx of first non-leaf node going backwards
+        for (int i=elems.length/2-1; i>=0; i--) 
+            siftDown(i);
+    }
 
-    public boolean isEmpty() {}
+    //Create PQueue from collection: O(n)
+    public PQueue(Collection<T> elems) {
+        heap = new ArrayList<>(elems.size());
+        for (T elem : elems) heap.add(elem);
+        for (int i=elems.size()/2-1; i>=0; i--) 
+            siftDown(i);
+    }
 
-    public void clear() {}
+    public boolean isEmpty() {return heap.size() == 0;}
 
-    public int size() {}
+    public void clear() {heap.clear();}
 
-    public T peek() {}
+    public int size() {return size();}
+    
+    public T peek() {
+        if (isEmpty()) return null;
+        return heap.get(0);
+    }
 
-    public T poll() {}
+    //O(logn)
+    public T poll() {
+        return removeAt(0);
+    }
 
-    public boolean contains(T elem) {}
+    //O(n)
+    public boolean contains(T elem) {
+        for (T data: heap) 
+            if (data.equals(elem)) return true;
+        
+        return false;
+    }
 
-    public void add(T elem) {}
+    //O(logn)
+    public void add(T elem) {
+        if (elem == null) throw new IllegalArgumentException("Cannot add null");
+        
+        heap.add(elem);
+        siftUp(size()-1);
+    }
 
-    public boolean remove(T elem) {}
+    //O(n)
+    public boolean remove(T elem) {
+        if (elem == null) throw new IllegalArgumentException("Cannot remove null");
+        
+        for (int i=0; i<size(); i++) {
+            if (heap.get(i).equals(elem)) {
+                removeAt(i);
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     //For testing. Checks if k and below is min heap. (To check entire heap, input k=0)
-    public boolean isMinHeap(int k) {}
+    public boolean isMinHeap(int k) {
+        if (k>size()) return true;
 
-    public String toString() {}
+        int child1 = k*2 + 1;
+        int child2 = k*2 + 2;
+        if (child1 < size() && less(child1, k)) return false; 
+        if (child2 < size() && less(child2, k)) return false; 
 
-    private boolean less(int i, int j) {}
+        return isMinHeap(child1) && isMinHeap(child2);
+    }
 
-    private void swap(int i, int j) {}
+    public String toString() {
+        return heap.toString();
+    }
 
-    private void siftUp(int k) {}
+    private boolean less(int i, int j) {
+        return heap.get(i).compareTo(heap.get(j)) < 0;
+    }
 
-    private void siftDown(int k) {}
+    private void swap(int i, int j) {
+        T temp = heap.get(i);
+        heap.set(i, heap.get(j));
+        heap.set(j, temp);
+    }
 
-    private T removeAt(int i) {}
+    //O(logn)
+    private void siftUp(int k) {
+        int parent = (k-1) / 2;
+        
+        while (k>=0 && parent>=0 && less(k, parent)) {
+            int otherChild; 
+            if (k%2!=0) otherChild = k+1;
+            else otherChild = k-1;
 
-    private void mapAdd(T value, int idx) {}
+            if (0<=otherChild && otherChild<size() && less(otherChild, k)) 
+                swap(parent, otherChild);
+            else swap(parent, k);
 
-    private void mapRemove(T value, int idx) {}
+            k = parent; 
+            parent = (k-1) / 2;
+        }
+    }
 
-    private Integer mapGet(T value) {}
+    //O(logn)
+    private void siftDown(int k) {
+        int child1 = 2*k + 1;
+        int child2 = 2*k + 2;
 
-    private void mapSwap(T val1, T val2, int val1Idx, int val2Idx) {}
+        while (true) {
+            if (child1 < size() && less(child1, k)) swap(child1, k);
+            else if (child2 < size() && less(child2, k)) swap(child2, k);
+            else break;
+        }
+    }
+
+    private T removeAt(int i) {
+        T res = heap.get(i);
+        int idxLastElement = heap.size()-1;
+        swap(i, idxLastElement);
+        heap.remove(idxLastElement);
+        if (i == idxLastElement) return res;
+
+        siftDown(i);
+        return res;
+    }
 }
