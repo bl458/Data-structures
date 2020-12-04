@@ -29,8 +29,16 @@ public class Main {
         // intStack.pop();
         // System.out.println(intStack);
 
-        String[] arr = {"b", "c", "a"};
-        PQueue<String> intPQueue = new PQueue<>();
+        String[] arr = {"z", "x", "y"};
+        PQueue<String> intPQueue = new PQueue<>(arr);
+        System.out.println(intPQueue);
+        intPQueue.add("w");
+        System.out.println(intPQueue);
+        intPQueue.add("v");
+        System.out.println(intPQueue);
+        intPQueue.add("u");
+        System.out.println(intPQueue);
+        intPQueue.add("t");
         System.out.println(intPQueue);
     }   
 }

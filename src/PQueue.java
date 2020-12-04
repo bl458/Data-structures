@@ -27,11 +27,11 @@ public class PQueue<T extends Comparable<T>> {
             siftDown(i);
     }
 
-    public boolean isEmpty() {return heap.size() == 0;}
+    public boolean isEmpty() {return size() == 0;}
 
     public void clear() {heap.clear();}
 
-    public int size() {return size();}
+    public int size() {return heap.size();}
     
     public T peek() {
         if (isEmpty()) return null;
