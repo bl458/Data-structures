@@ -74,6 +74,7 @@ public class PQueue<T extends Comparable<T>> {
     }
 
     //For testing. Checks if k and below is min heap. (To check entire heap, input k=0)
+    //O(n)
     public boolean isMinHeap(int k) {
         if (k>size()) return true;
 
@@ -129,6 +130,7 @@ public class PQueue<T extends Comparable<T>> {
         }
     }
 
+    //O(logn)
     private T removeAt(int i) {
         T res = heap.get(i);
         int idxLastElement = heap.size()-1;

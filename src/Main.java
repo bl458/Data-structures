@@ -22,11 +22,15 @@ public class Main {
         // strDLList.remove("c");
         // System.out.println(strDLList + " " + strDLList.size());
 
-        Stack<Integer> intStack = new Stack<Integer>();
-        intStack.push(1);
-        intStack.push(2);
-        System.out.println(intStack.toString() + ' ' + intStack.peek());
-        intStack.pop();
-        System.out.println(intStack);
+        // Stack<Integer> intStack = new Stack<Integer>();
+        // intStack.push(1);
+        // intStack.push(2);
+        // System.out.println(intStack.toString() + ' ' + intStack.peek());
+        // intStack.pop();
+        // System.out.println(intStack);
+
+        String[] arr = {"b", "c", "a"};
+        PQueue<String> intPQueue = new PQueue<>();
+        System.out.println(intPQueue);
     }   
 }
