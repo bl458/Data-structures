@@ -59,25 +59,62 @@ public class HashTableSeparateChaining<K, V> implements Iterable<K> {
         size = 0;
     }
 
-    public boolean containsKey(K key) {}
+    public boolean containsKey(K key) { return hasKey(key); }
 
-    public boolean hasKey(K key) {}
+    public boolean hasKey(K key) {
+        int idx = normalizeIndex(key.hashCode());
+        return bucketSeekEntry(idx, key) != null;
+    }
 
-    public V put(K key, V value) {}
+    public V put(K key, V value) { return insert(key, value); }
 
-    public V add(K key, V value) {}
+    public V add(K key, V value) { return insert(key, value); }
 
-    public V insert(K key, V value) {}
+    public V insert(K key, V value) {
+        if (key == null) throw new IllegalArgumentException("Null key");
 
-    public V get(K key) {}
+        int idx = normalizeIndex(key.hashCode());
+        return bucketInsertEntry(idx, new Entry<K,V>(key, value));
+    }
 
-    public V remove(K key) {}
+    public V get(K key) {
+        if (key == null) throw new IllegalArgumentException("Null key");
 
-    public List<K> keys() {}
+        int idx = normalizeIndex(key.hashCode());
+        Entry<K,V> entry = bucketSeekEntry(idx, key);
+        if (entry != null) return entry.value;
+        
+        return null;
+    }
 
-    public List<V> values() {}
+    public V remove(K key) {
+        if (key == null) throw new IllegalArgumentException("Null key");
 
-    private int normalizeIndex(int keyHash) {}
+        int idx = normalizeIndex(key.hashCode());
+        return bucketRemoveEntry(idx, key);
+    }
+
+    public List<K> keys() {
+        List<K> keys = new ArrayList<>(capacity);
+        for (LinkedList<Entry<K,V>> ll : table) {
+            if (ll != null) 
+                for (Entry<K,V> entry : ll) if (entry != null) keys.add(entry.key);
+        }
+        
+        return keys;
+    }
+
+    public List<V> values() {
+        List<V> values = new ArrayList<>(capacity);
+        for (LinkedList<Entry<K,V>> ll : table) {
+            if (ll != null) 
+                for (Entry<K,V> entry : ll) if (entry != null) values.add(entry.value);
+        }
+        
+        return values;
+    }
+
+    private int normalizeIndex(int keyHash) { return Math.abs(keyHash) % capacity; }
 
     private Entry<K, V> bucketSeekEntry(int bucketIndex, K key) {}
 
