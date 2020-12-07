@@ -29,21 +29,21 @@ public class Main {
         // intStack.pop();
         // System.out.println(intStack);
 
-        String[] arr = {"z", "x", "y"};
-        PQueue<String> intPQueue = new PQueue<>(arr);
-        System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
-        intPQueue.add("w");
-        System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
-        intPQueue.add("v");
-        System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
-        intPQueue.add("u");
-        System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
-        intPQueue.add("t");
-        System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+        // String[] arr = {"z", "x", "y"};
+        // PQueue<String> intPQueue = new PQueue<>(arr);
+        // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+        // intPQueue.add("w");
+        // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+        // intPQueue.add("v");
+        // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+        // intPQueue.add("u");
+        // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+        // intPQueue.add("t");
+        // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
 
-        intPQueue.poll();
-        System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
-        intPQueue.remove("v");
-        System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+        // intPQueue.poll();
+        // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+        // intPQueue.remove("v");
+        // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
     }   
 }
