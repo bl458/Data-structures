@@ -114,6 +114,64 @@ public class HashTableSeparateChaining<K, V> implements Iterable<K> {
         return values;
     }
 
+    @Override
+    public java.util.Iterator<K> iterator() {
+        final int elementCount = size();
+
+        return new java.util.Iterator<K>() {
+            int bucketIndex = 0;
+            java.util.Iterator<Entry<K, V>> bucketIter = 
+                (table[0] == null) ? null : table[0].iterator();
+
+            @Override
+            public boolean hasNext() {
+                // An item was added or removed while iterating
+                if (elementCount != size) throw new java.util.ConcurrentModificationException();
+                
+                if (bucketIter == null || !bucketIter.hasNext()) {
+
+                    // Search next buckets until a valid iterator is found
+                    while (++bucketIndex < capacity) {
+                        if (table[bucketIndex] != null) {
+            
+                            // Make sure this iterator actually has elements -_-
+                            java.util.Iterator<Entry<K, V>> nextIter = table[bucketIndex].iterator();
+                            if (nextIter.hasNext()) {
+                                bucketIter = nextIter;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                return bucketIndex < capacity;
+            }
+
+            @Override
+            public K next() {
+                return bucketIter.next().key;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < capacity; i++) {
+            if (table[i] == null) continue;
+            for (Entry<K, V> entry : table[i]) sb.append(entry + ", ");
+        }
+
+        sb.append("}");
+        return sb.toString();
+    }
+
     private int normalizeIndex(int keyHash) { return Math.abs(keyHash) % capacity; }
 
     private Entry<K, V> bucketSeekEntry(int bucketIndex, K key) {
