@@ -116,13 +116,62 @@ public class HashTableSeparateChaining<K, V> implements Iterable<K> {
 
     private int normalizeIndex(int keyHash) { return Math.abs(keyHash) % capacity; }
 
-    private Entry<K, V> bucketSeekEntry(int bucketIndex, K key) {}
+    private Entry<K, V> bucketSeekEntry(int bucketIndex, K key) {
+        LinkedList<Entry<K,V>> ll = table[bucketIndex];
+        if (ll == null) return null;
 
-    private V bucketInsertEntry(int bucketIndex, Entry<K, V> entry) {}
+        for (Entry<K,V> entry : ll) 
+            if (entry != null && entry.key.equals(key)) return entry;
 
-    private V bucketRemoveEntry(int bucketIndex, K key) {}
+        return null;
+    }
 
-    private void resizeTable() {}
+    private V bucketInsertEntry(int bucketIndex, Entry<K, V> entry) {        
+        Entry<K, V> entryFound = bucketSeekEntry(bucketIndex, entry.key);
+        if (entryFound != null) {
+            entryFound.value = entry.value;
+            return entry.value;
+        }
+        
+        LinkedList<Entry<K,V>> ll = table[bucketIndex];
+        if (ll == null) ll = new LinkedList<>();
+        
+        ll.add(entry);
+        if (++size > threshold) resizeTable();
+        
+        return null; //Indicates new entry was added instead of updating existing entry's value
+    }
+
+    private V bucketRemoveEntry(int bucketIndex, K key) {
+        Entry<K, V> entry = bucketSeekEntry(bucketIndex, key);
+        if (entry == null) return null;
+
+        LinkedList<Entry<K,V>> ll = table[bucketIndex];
+        ll.remove(entry);
+        size--;
+        return entry.value;        
+    }
+
+    private void resizeTable() {
+        capacity *= 2;
+        threshold = (int) (capacity * maxLoadFactor);
+        LinkedList<Entry<K,V>>[] newTable = new LinkedList[capacity];
+        for (int i=0; i<size(); i++) {
+            if (table[i] != null) { 
+                for (Entry<K,V> entry : table[i]) {
+                    int newIdx = normalizeIndex(entry.hash);
+                    if (newTable[newIdx] == null) newTable[newIdx] = new LinkedList<Entry<K, V>>();
+                    
+                    newTable[newIdx].add(entry);
+                }
+
+                table[i].clear();
+                table[i] = null;
+            }
+        }
+        
+        table = newTable;
+    }
 
 
 }
