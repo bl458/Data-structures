@@ -1,3 +1,5 @@
+package ds; 
+
 import java.util.*;
 
 class Entry<K, V> {

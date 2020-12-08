@@ -1,3 +1,5 @@
+package ds; 
+
 public class Array<T> implements Iterable<T> {
     private T[] arr;
     private int len = 0;
