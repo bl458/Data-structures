@@ -1,4 +1,4 @@
-import algorithm.InsertionSort;
+import algorithm.*;
 import java.util.Arrays;
 
 public class Main {
@@ -48,9 +48,14 @@ public class Main {
         // intPQueue.remove("v");
         // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
 
-        InsertionSort iSort = new InsertionSort();
-        int[] arr = {7,1,5,3,1,4};
-        iSort.sort(arr);
-        System.out.println(Arrays.toString(arr));
+        // InsertionSort iSort = new InsertionSort();
+        // int[] arr = {7,1,5,3,1,4};
+        // iSort.sort(arr);
+        // System.out.println(Arrays.toString(arr));
+
+        SelectionSort sSort = new SelectionSort();
+        int[] arr2 = {7,1,5,3,1,4};
+        sSort.sort(arr2);
+        System.out.println(Arrays.toString(arr2));
     }   
 }
