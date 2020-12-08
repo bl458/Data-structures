@@ -1,3 +1,6 @@
+import algorithm.InsertionSort;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         // Array<Integer> intArr = new Array<Integer>();
@@ -40,10 +43,14 @@ public class Main {
         // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
         // intPQueue.add("t");
         // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
-
         // intPQueue.poll();
         // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
         // intPQueue.remove("v");
         // System.out.println(intPQueue +" " +intPQueue.isMinHeap(0));
+
+        InsertionSort iSort = new InsertionSort();
+        int[] arr = {7,1,5,3,1,4};
+        iSort.sort(arr);
+        System.out.println(Arrays.toString(arr));
     }   
 }
