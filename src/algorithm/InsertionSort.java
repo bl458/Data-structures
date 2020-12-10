@@ -1,6 +1,6 @@
 package algorithm;
 
-public class InsertionSort extends InplaceSort {
+public class InsertionSort extends Sort {
     public void sort(int[] arr) {
         for (int i=1; i<arr.length; i++) {
             int left = i-1;

@@ -1,7 +1,7 @@
 package algorithm;
 
 //Cannot be instantiated
-public abstract class InplaceSort {
+public abstract class Sort {
     //Sorts in ascending
     public abstract void sort(int[] values);
 

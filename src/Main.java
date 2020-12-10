@@ -63,9 +63,14 @@ public class Main {
         // qSort.sort(arr3);
         // System.out.println(Arrays.toString(arr3));
 
-        Mergesort mSort = new Mergesort();
-        int[] arr4 = {7,1,5,3,1,4};
-        mSort.sort(arr4);
-        System.out.println(Arrays.toString(arr4));
+        // Mergesort mSort = new Mergesort();
+        // int[] arr4 = {7,1,5,3,1,4};
+        // mSort.sort(arr4);
+        // System.out.println(Arrays.toString(arr4));
+    
+        CountingSort cSort = new CountingSort();
+        int[] arr5 = {7,1,5,3,1,4};
+        cSort.sort(arr5);
+        System.out.println(Arrays.toString(arr5));
     }   
 }

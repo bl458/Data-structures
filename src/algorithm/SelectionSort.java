@@ -1,6 +1,6 @@
 package algorithm; 
 
-public class SelectionSort extends InplaceSort {
+public class SelectionSort extends Sort {
     public void sort(int[] arr) {
         for (int i=0; i<arr.length; i++) {
             int minIdx = i;
