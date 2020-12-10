@@ -5,7 +5,7 @@ public class Quicksort extends InplaceSort {
         sortHelper(values, 0, values.length-1);
     }
 
-    public void sortHelper(int[] values, int low, int high) {
+    private void sortHelper(int[] values, int low, int high) {
         if (low < high) {
             int pivotIdx = partition(values, low, high);
             sortHelper(values, low, pivotIdx-1);
@@ -15,7 +15,7 @@ public class Quicksort extends InplaceSort {
 
     //We will be partitioning arr from low idx to high idx into two partitions. 
     //High idx is the pivot by default. 
-    public int partition(int[] values, int low, int high) {
+    private int partition(int[] values, int low, int high) {
         int pivot = values[high];
         
         int i = low-1;

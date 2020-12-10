@@ -58,9 +58,14 @@ public class Main {
         // sSort.sort(arr2);
         // System.out.println(Arrays.toString(arr2));
 
-        Quicksort qSort = new Quicksort();
-        int[] arr3 = {7,1,5,3,1,4};
-        qSort.sort(arr3);
-        System.out.println(Arrays.toString(arr3));
+        // Quicksort qSort = new Quicksort();
+        // int[] arr3 = {7,1,5,3,1,4};
+        // qSort.sort(arr3);
+        // System.out.println(Arrays.toString(arr3));
+
+        Mergesort mSort = new Mergesort();
+        int[] arr4 = {7,1,5,3,1,4};
+        mSort.sort(arr4);
+        System.out.println(Arrays.toString(arr4));
     }   
 }
