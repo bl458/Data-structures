@@ -68,9 +68,14 @@ public class Main {
         // mSort.sort(arr4);
         // System.out.println(Arrays.toString(arr4));
     
-        CountingSort cSort = new CountingSort();
-        int[] arr5 = {7,1,5,3,1,4};
-        cSort.sort(arr5);
-        System.out.println(Arrays.toString(arr5));
+        // CountingSort cSort = new CountingSort();
+        // int[] arr5 = {7,1,5,3,1,4};
+        // cSort.sort(arr5);
+        // System.out.println(Arrays.toString(arr5));
+
+        HeapSort hSort = new HeapSort();
+        int[] arr6 = {7,1,5,3,1,4};
+        hSort.sort(arr6);
+        System.out.println(Arrays.toString(arr6));
     }   
 }

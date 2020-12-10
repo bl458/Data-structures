@@ -1,6 +1,6 @@
 package algorithm; 
 
-public class Mergesort extends Sort {
+public class MergeSort extends Sort {
     public void sort(int[] values) {
         sortHelper(values, 0, values.length-1);
     }

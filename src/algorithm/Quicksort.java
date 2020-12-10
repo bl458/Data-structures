@@ -1,6 +1,6 @@
 package algorithm;
 
-public class Quicksort extends Sort {
+public class QuickSort extends Sort {
     public void sort(int[] values) {
         sortHelper(values, 0, values.length-1);
     }
