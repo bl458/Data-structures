@@ -53,9 +53,14 @@ public class Main {
         // iSort.sort(arr);
         // System.out.println(Arrays.toString(arr));
 
-        SelectionSort sSort = new SelectionSort();
-        int[] arr2 = {7,1,5,3,1,4};
-        sSort.sort(arr2);
-        System.out.println(Arrays.toString(arr2));
+        // SelectionSort sSort = new SelectionSort();
+        // int[] arr2 = {7,1,5,3,1,4};
+        // sSort.sort(arr2);
+        // System.out.println(Arrays.toString(arr2));
+
+        Quicksort qSort = new Quicksort();
+        int[] arr3 = {7,1,5,3,1,4};
+        qSort.sort(arr3);
+        System.out.println(Arrays.toString(arr3));
     }   
 }
