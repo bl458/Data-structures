@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.sort;
 
 public class InsertionSort extends Sort {
     public void sort(int[] arr) {

@@ -1,5 +1,8 @@
-import algorithm.*;
 import java.util.Arrays;
+
+import algorithm.sort.*;
+import algorithm.*;
+
 
 public class Main {
     public static void main(String[] args) throws Exception {

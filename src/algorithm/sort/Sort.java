@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.sort;
 
 //Cannot be instantiated
 public abstract class Sort {
