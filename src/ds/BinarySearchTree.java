@@ -198,4 +198,34 @@ public class BinarySearchTree<T extends Comparable<T>> {
             System.out.print(node + " ");
         }
     }
+
+    //O(n)
+    public void levelOrderIter() {
+        Queue<Node> q = new Queue<>();
+        if (root != null) q.offer(root);
+
+        while (!q.isEmpty()) {
+            Node node = q.poll();
+            System.out.print(node + " ");
+            if (node.left != null) q.offer(node.left);
+            if (node.right != null) q.offer(node.right);
+        }
+    }
+
+    //O(n^2) worst case, O(n) best case
+    public void levelOrderRecurs() { 
+        int height = height();
+        for (int level=1; level<=height; level++)
+            printLevel(root, level); 
+    }
+    
+    private void printLevel(Node node, int level) {
+        if (node == null) return;
+
+        if (level == 1) System.out.print(node + " ");
+        else if (level > 1) {
+            printLevel(node.left, level - 1);
+            printLevel(node.right, level - 1);
+        }
+    }
 }

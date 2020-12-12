@@ -1,7 +1,5 @@
 package algorithm.sort;
 
-import java.util.Arrays;
-
 //Sort in ascending order using max heap
 public class HeapSort extends Sort {
     private void heapify(int[] values, int low, int high) {
