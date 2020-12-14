@@ -2,6 +2,7 @@ package algorithm;
 
 import java.util.*;
 
+//Refer to GeeksForGeeks
 public class DijkstraPQ {
     public class GraphNode implements Comparator<GraphNode> {
         int node; //Node representation. Often means the idx of the node
