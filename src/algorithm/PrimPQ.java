@@ -44,6 +44,7 @@ public class PrimPQ {
 
     public int getMstSum() { return mstSum; }
 
+    //O(ElogE). Using IndexedMinHeap gives us O(ElogV), Fib heap gives us O(E + VlogV)
     public void prim() {
         pq = new PriorityQueue<>();
         visited = new boolean[graph.size()];
