@@ -6,7 +6,7 @@ public abstract class Sort {
     public abstract void sort(int[] values);
 
     public void swap(int[] arr, int idx1, int idx2) {
-        System.out.println(idx1 +" " +idx2);
+        // System.out.println(idx1 +" " +idx2);
         int temp = arr[idx1];
         arr[idx1] = arr[idx2];
         arr[idx2] = temp;

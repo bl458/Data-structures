@@ -76,9 +76,14 @@ public class Main {
         // cSort.sort(arr5);
         // System.out.println(Arrays.toString(arr5));
 
-        HeapSort hSort = new HeapSort();
-        int[] arr6 = {7,1,5,3,1,4};
-        hSort.sort(arr6);
-        System.out.println(Arrays.toString(arr6));
+        // HeapSort hSort = new HeapSort();
+        // int[] arr6 = {7,1,5,3,1,4};
+        // hSort.sort(arr6);
+        // System.out.println(Arrays.toString(arr6));
+
+        BubbleSort iSort = new BubbleSort();
+        int[] arr7 = {7,1,5,3,1,4};
+        iSort.sort(arr7);
+        System.out.println(Arrays.toString(arr7));
     }   
 }
