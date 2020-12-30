@@ -106,15 +106,9 @@ public class PQueue<T extends Comparable<T>> {
     private void siftUp(int k) {
         int parent = (k-1) / 2;
         
-        while (k>=0 && parent>=0 && less(k, parent)) {
-            int otherChild; 
-            if (k%2!=0) otherChild = k+1;
-            else otherChild = k-1;
-
-            if (0<=otherChild && otherChild<size() && less(otherChild, k)) 
-                swap(parent, otherChild);
-            else swap(parent, k);
-
+        //As long as k>0, parent is also valid 
+        while (k>0 && less(k, parent)) {
+            swap(parent, k);
             k = parent; 
             parent = (k-1) / 2;
         }
@@ -122,13 +116,17 @@ public class PQueue<T extends Comparable<T>> {
 
     //O(logn)
     private void siftDown(int k) {
-        int child1 = 2*k + 1;
-        int child2 = 2*k + 2;
-
+        int child1, child2, smallChild;
         while (true) {
-            if (child1 < size() && less(child1, k)) swap(child1, k);
-            else if (child2 < size() && less(child2, k)) swap(child2, k);
-            else break;
+            child1 = 2*k + 1;
+            child2 = 2*k + 2;
+            smallChild = child1;
+            if (child2 < size() && less(child2, child1)) smallChild = child2;
+
+            if (smallChild >= size() || less(k, smallChild)) break;
+            
+            swap(smallChild, k);
+            k = smallChild;
         }
     }
 

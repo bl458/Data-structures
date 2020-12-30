@@ -26,8 +26,10 @@ public class Array<T> implements Iterable<T> {
             T[] new_arr = (T[]) new Object[capacity];
             for (int i=0; i<len; i++) 
                 new_arr[i] = arr[i];
-            this.arr = new_arr;
+            
+            arr = new_arr;
         }
+        
         arr[len++] = element;
     }
 

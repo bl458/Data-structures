@@ -232,6 +232,4 @@ public class HashTableSeparateChaining<K, V> implements Iterable<K> {
         
         table = newTable;
     }
-
-
 }
