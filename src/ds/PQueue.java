@@ -117,6 +117,7 @@ public class PQueue<T extends Comparable<T>> {
     //O(logn)
     private void siftDown(int k) {
         int child1, child2, smallChild;
+        
         while (true) {
             child1 = 2*k + 1;
             child2 = 2*k + 2;
