@@ -51,5 +51,27 @@ public class Graph {
         }
     }
 
+    public void bfsIter(int source) {
+        if (source < 0 || source >= adj.length) throw new IllegalArgumentException("Invalid source vertex");
 
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] visited = new boolean[v];
+        //Visit source 
+        visited[source] = true;
+        System.out.print(source + " ");
+        queue.offer(source);
+        while (!queue.isEmpty()) {
+            int vertex = queue.poll();
+            Iterator<Integer> iter = adj[vertex].iterator();
+            while (iter.hasNext()) {
+                int neighbor = iter.next();
+                //Visit neighbor if not visited
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    System.out.print(source + " ");
+                    queue.offer(neighbor);
+                }
+            }
+        }
+    }
 }
